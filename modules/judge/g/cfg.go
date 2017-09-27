@@ -43,6 +43,7 @@ type RedisConfig struct {
 	ConnTimeout  int    `json:"connTimeout"`
 	ReadTimeout  int    `json:"readTimeout"`
 	WriteTimeout int    `json:"writeTimeout"`
+	Password     string `json:"password"`
 }
 
 type AlarmConfig struct {

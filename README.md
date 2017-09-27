@@ -1,5 +1,6 @@
 # Falcon+
 
+
 ![Open-Falcon](./logo.png)
 
 [![Build Status](https://travis-ci.org/open-falcon/falcon-plus.svg?branch=plus-dev)](https://travis-ci.org/open-falcon/falcon-plus)
@@ -8,6 +9,16 @@
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/5035c017b02c4a4a807ebc4e9f153e6f/badge.svg)](https://www.quantifiedcode.com/app/project/5035c017b02c4a4a807ebc4e9f153e6f)
 [![Go Report Card](https://goreportcard.com/badge/github.com/open-falcon/falcon-plus)](https://goreportcard.com/report/github.com/open-falcon/falcon-plus)
 [![License](https://img.shields.io/badge/LICENSE-Apache2.0-ff69b4.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+<hr>
+
+# Changelogs by Meorn
+- redis增加密码支持
+- 修改脚本及配置文件中所有数据库都带上falcon_前缀
+- 脚本默认初始化root用户
+- 增加初始化配置脚本init_server.sh和init_client.sh
+
+<hr>
 
 # Documentations
 

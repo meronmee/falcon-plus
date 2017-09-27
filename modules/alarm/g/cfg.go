@@ -35,6 +35,7 @@ type RedisConfig struct {
 	UserIMQueue   string   `json:"userIMQueue"`
 	UserSmsQueue  string   `json:"userSmsQueue"`
 	UserMailQueue string   `json:"userMailQueue"`
+	Password      string   `json:"password"`
 }
 
 type ApiConfig struct {

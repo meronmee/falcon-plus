@@ -1,11 +1,11 @@
-CREATE DATABASE graph
+CREATE DATABASE falcon_graph
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
-USE graph;
+USE falcon_graph;
 SET NAMES utf8;
 
-DROP TABLE if exists `graph`.`endpoint`;
-CREATE TABLE `graph`.`endpoint` (
+DROP TABLE if exists `endpoint`;
+CREATE TABLE `endpoint` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `endpoint` varchar(255) NOT NULL DEFAULT '',
   `ts` int(11) DEFAULT NULL,
@@ -15,8 +15,8 @@ CREATE TABLE `graph`.`endpoint` (
   UNIQUE KEY `idx_endpoint` (`endpoint`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE if exists `graph`.`endpoint_counter`;
-CREATE TABLE `graph`.`endpoint_counter` (
+DROP TABLE if exists `endpoint_counter`;
+CREATE TABLE `endpoint_counter` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `endpoint_id` int(10) unsigned NOT NULL,
   `counter` varchar(255) NOT NULL DEFAULT '',
@@ -29,8 +29,8 @@ CREATE TABLE `graph`.`endpoint_counter` (
   UNIQUE KEY `idx_endpoint_id_counter` (`endpoint_id`, `counter`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE if exists `graph`.`tag_endpoint`;
-CREATE TABLE `graph`.`tag_endpoint` (
+DROP TABLE if exists `tag_endpoint`;
+CREATE TABLE `tag_endpoint` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tag` varchar(255) NOT NULL DEFAULT '' COMMENT 'srv=tv',
   `endpoint_id` int(10) unsigned NOT NULL,

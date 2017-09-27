@@ -1,7 +1,7 @@
-CREATE DATABASE alarms
+CREATE DATABASE falcon_alarms
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
-USE alarms;
+USE falcon_alarms;
 SET NAMES utf8;
 
 /*
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS event_note (
   FOREIGN KEY (event_caseId) REFERENCES event_cases(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES uic.user(id)
+  FOREIGN KEY (user_id) REFERENCES falcon_uic.user(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );

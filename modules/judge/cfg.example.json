@@ -21,6 +21,7 @@
         "queuePattern": "event:p%v",
         "redis": {
             "dsn": "127.0.0.1:6379",
+            "password": "password",
             "maxIdle": 5,
             "connTimeout": 5000,
             "readTimeout": 5000,

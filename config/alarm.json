@@ -6,6 +6,7 @@
     },
     "redis": {
         "addr": "%%REDIS%%",
+        "password": "redispass",
         "maxIdle": 5,
         "highQueues": [
             "event:p0",

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.31, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: dashboard
+-- Host: 127.0.0.1    Database: falcon_dashboard
 -- ------------------------------------------------------
 -- Server version	5.5.31-log
 
@@ -19,10 +19,10 @@
 -- Table structure for table `dashboard_graph`
 --
 
-CREATE DATABASE dashboard
+CREATE DATABASE falcon_dashboard
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
-USE dashboard;
+USE falcon_dashboard;
 SET NAMES utf8;
 
 DROP TABLE IF EXISTS `dashboard_graph`;

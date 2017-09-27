@@ -21,6 +21,7 @@
         "queuePattern": "event:p%v",
         "redis": {
             "dsn": "%%REDIS%%",
+            "password": "redispass",
             "maxIdle": 5,
             "connTimeout": 5000,
             "readTimeout": 5000,

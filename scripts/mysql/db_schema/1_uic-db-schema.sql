@@ -1,7 +1,7 @@
-create database uic
+create database falcon_uic
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
-USE uic;
+USE falcon_uic;
 SET NAMES utf8;
 
 DROP TABLE if exists team;
@@ -28,7 +28,7 @@ CREATE TABLE `user` (
   `phone` varchar(16) not null default '',
   `im` varchar(32) not null default '',
   `qq` varchar(16) not null default '',
-  `role` tinyint not null default 0,
+  `role` tinyint not null default 0 COMMENT '2:超级管理员, 1:管理员, 0:普通用户',
   `creator` int(10) unsigned NOT NULL DEFAULT 0,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -56,6 +56,7 @@ CREATE TABLE `session` (
   KEY `idx_session_sig` (`sig`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*900150983cd24fb0d6963f7d28e17f72*/
-/*insert into `user`(`name`, `passwd`, `role`, `created`) values('root', md5('abc'), 2, now());*/
+# 初始化超管用户
+insert into `user`(`name`, `passwd`, `role`, `created`) values('root', md5('123456'), 2, now());
+
 
