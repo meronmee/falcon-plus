@@ -19,6 +19,13 @@
 - 增加初始化配置脚本init_server.sh和init_client.sh
 - 整合进来dashboard
 
+# Dashboard changelogs by Meorn ( Fork from [dashboard](https://github.com/open-falcon/dashboard))
+- 只能管理员添加用户，不能自行注册
+- 修改用户权限控制
+- 登录后默认跳转到dashboard
+- hostgroups->hosts添加改完选择，列表中的超链接改为提示
+- 相关提示优化
+
 <hr>
 
 # Documentations
