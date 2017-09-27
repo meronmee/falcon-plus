@@ -17,6 +17,7 @@
 - 修改脚本及配置文件中所有数据库都带上falcon_前缀
 - 脚本默认初始化root用户
 - 增加初始化配置脚本init_server.sh和init_client.sh
+- 整合进来dashboard
 
 <hr>
 

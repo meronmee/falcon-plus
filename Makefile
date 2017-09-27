@@ -69,7 +69,7 @@ pack: checkbin
 	@bash ./config/confgen.sh
 	@cp $(TARGET) ./out/$(TARGET)
 
-	@mkdir out/scripts/
+	@cp -r ./modules/dashboard ./out/
 	@cp -r ./scripts ./out/
 	@cp ./init_client.sh ./out/init_client.sh
 	@cp ./init_server.sh ./out/init_server.sh
