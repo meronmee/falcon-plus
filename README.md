@@ -26,11 +26,12 @@
 - hostgroups->hosts添加改完选择，列表中的超链接改为提示
 - 相关提示优化
 
-# 整合修改版说明
-1. 准备
+# 整合版安装部署
+## 准备
 - 按照下面的编译方式打包生产： open-falcon-vx.x.x.tar.gz (以下使用open-falcon-v0.2.1.m2.tar.gz)
 - redis,mysql
-2. 服务端
+
+## 服务端
 - 创建工作目录
 ```
 export FALCON_HOME=/mnt/local/monitor
@@ -108,7 +109,7 @@ bash control stop
 bash control tail
 ```
 
-3. 客户端
+## 客户端
 - 创建工作目录
 ```
 export FALCON_HOME=/mnt/local/monitor
