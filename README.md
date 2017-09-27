@@ -26,6 +26,136 @@
 - hostgroups->hosts添加改完选择，列表中的超链接改为提示
 - 相关提示优化
 
+# 整合修改版说明
+1. 准备
+- 按照下面的编译方式打包生产： open-falcon-vx.x.x.tar.gz (以下使用open-falcon-v0.2.1.m2.tar.gz)
+- redis,mysql
+2. 服务端
+- 创建工作目录
+```
+export FALCON_HOME=/mnt/local/monitor
+export WORKSPACE=$FALCON_HOME/open-falcon
+mkdir -p $WORKSPACE
+cd $FALCON_HOME
+```
+
+- 安装mysql和redis,如果已有这两项服务（不一定在同一台机器上）直接跳过
+
+- 进入FALCON_HOME,将open-falcon-v0.2.1.m2.tar.gz上传到该目录下并解压
+```
+tar -xzvf open-falcon-v0.2.1.m2.tar.gz  -C $WORKSPACE
+```
+
+- 初始化数据库： $WORKSPACE/scripts/mysql/db_schema/*.sql
+- 根据情况修改配置信息（ 先查看服务器端口占用情况） 
+```
+netstat -nltp|grep -E '1988|9080|9081|6090|6055|9912|6071|6070|16060|18433|14444|6060|8433|4444|6031|6030|6081|6080'
+
+vi $WORKSPACE/init_server.sh
+
+ufw allow 3306;ufw allow 6379;ufw allow 1988;ufw allow 9080;ufw allow 9081;ufw allow 6030;ufw allow 8433;
+ufw allow 6090;ufw allow 6055;ufw allow 9912;ufw allow 6071;ufw allow 6070;ufw allow 16060;ufw allow 14444;ufw allow 18433;ufw allow 6060;ufw allow 4444;ufw allow 6031;ufw allow 6081;ufw allow 6080;
+```
+
+- 执行初始化脚本
+```
+$WORKSPACE/init_server.sh
+```
+
+- 启动所有组件
+```
+cd $WORKSPACE
+./open-falcon start
+```
+
+- 检查各组件状态
+```
+cd $WORKSPACE
+./open-falcon check
+```
+
+- 更多的命令行工具用法
+```
+# ./open-falcon [start|stop|restart|check|monitor|reload] module
+Example:
+./open-falcon start agent
+For debugging , You can check $WorkDir/$moduleName/log/logs/xxx.log
+```
+
+**-----------------------------------dashboard-----------------------------------**
+
+- 安装dashboard相关组件
+```
+apt-get install -y python-virtualenv;
+
+apt-get install -y slapd ldap-utils;
+输入admin密码123456
+
+apt-get install -y libmysqld-dev;
+apt-get install -y build-essential;
+apt-get install -y python-dev libldap2-dev libsasl2-dev libssl-dev;
+
+cd $WORKSPACE/dashboard/;ll;
+virtualenv ./env;
+./env/bin/pip install -r pip_requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+cd $WORKSPACE/dashboard/
+启动dashboard
+bash control start
+停止dashboard
+bash control stop
+查日志
+bash control tail
+```
+
+3. 客户端
+- 创建工作目录
+```
+export FALCON_HOME=/mnt/local/monitor
+export WORKSPACE=$FALCON_HOME/open-falcon
+mkdir -p $WORKSPACE
+cd $FALCON_HOME
+```
+
+- 进入FALCON_HOME,将open-falcon-v0.2.1.m2.tar.gz上传到该目录下并解压
+```
+tar -xzvf open-falcon-v0.2.1.m2.tar.gz  -C $WORKSPACE
+```
+
+- 根据情况修改配置信息（ 先查看服务器端口占用情况） 
+````
+netstat -nltp|grep -E '1988'
+
+vi $WORKSPACE/init_client.sh
+
+ufw allow 1988;
+````
+
+- 执行初始化脚本
+```
+$WORKSPACE/init_client.sh
+```
+
+- 启动Agent
+```
+cd $WORKSPACE
+./open-falcon start agent
+```
+
+- 检查Agent状态
+```
+cd $WORKSPACE
+./open-falcon check
+./agent/bin/falcon-agent --check
+```
+
+- 更多的命令行工具用法
+```
+./open-falcon start agent  启动进程
+./open-falcon stop agent  停止进程
+./open-falcon monitor agent  查看日志
+```
+
 <hr>
 
 # Documentations
