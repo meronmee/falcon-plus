@@ -68,12 +68,14 @@ pack: checkbin
 	@mkdir out/graph/data
 	@bash ./config/confgen.sh
 	@cp $(TARGET) ./out/$(TARGET)
+
 	@mkdir out/scripts/
 	@cp -r ./scripts ./out/scripts
-  @cp  ./init_client.sh ./out/init_client.sh
-  @cp  ./init_server.sh ./out/init_server.sh
-  @chmod +775 ./out/init_client.sh
-  @chmod +775 ./out/init_server.sh
+	@cp ./init_client.sh ./out/init_client.sh
+	@cp ./init_server.sh ./out/init_server.sh
+	@chmod +775 ./out/init_client.sh
+	@chmod +775 ./out/init_server.sh
+
 	tar -C out -zcf open-falcon-v$(VERSION).tar.gz .
 	@rm -rf out
 
