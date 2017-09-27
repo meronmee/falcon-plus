@@ -70,7 +70,7 @@ pack: checkbin
 	@cp $(TARGET) ./out/$(TARGET)
 
 	@mkdir out/scripts/
-	@cp -r ./scripts ./out/scripts
+	@cp -r ./scripts ./out/
 	@cp ./init_client.sh ./out/init_client.sh
 	@cp ./init_server.sh ./out/init_server.sh
 	@chmod +775 ./out/init_client.sh
