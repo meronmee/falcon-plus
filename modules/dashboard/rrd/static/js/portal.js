@@ -168,6 +168,23 @@ function batch_add_host() {
     }, "json");
 }
 
+function add_host(group_id) {
+    var hosts = $.trim($("#txtAddHost").val());
+    if (hosts.length == 0) {
+        err_message_quietly('请选择一个机器');
+        return false;
+    }
+
+    $.post('/portal/host/add', {'group_id': group_id, 'host_id': hosts}, function (json) {
+        if (json.msg.length > 0) {
+            err_message_quietly(json.msg);
+        } else {
+            err_message_quietly("添加成功");
+            location.reload();
+        }
+    }, "json");
+}
+
 function host_unbind_group(host_id, group_id) {
     $.getJSON('/portal/host/unbind', {'host_id': host_id, 'group_id': group_id}, function (json) {
         handle_quietly(json, function () {
@@ -385,6 +402,46 @@ function make_select2_for_metric(selector) {
         }
     });
 }
+
+function make_select2_for_hostname(selector) {
+    $(selector).select2({
+        placeholder: "input host name",
+        allowClear: true,
+        quietMillis: 100,
+        minimumInputLength: 2,
+        id: function (obj) {
+            return obj.id;
+        },
+        ajax: {
+            url: "/api/host/query",
+            dataType: 'json',
+            data: function (term, page) {
+                return {
+                    query: term,
+                    limit: 10
+                };
+            },
+            results: function (json, page) {
+                return {results: json.data};
+            }
+        },
+
+        initSelection: function (element, callback) {
+            var host_id = $(element).val();
+            $.getJSON("/api/host/" + host_id, function (json) {
+                callback(json.data);
+            });
+        },
+
+        formatResult: function (obj) {
+            return obj.hostname
+        },
+        formatSelection: function (obj) {
+            return obj.hostname
+        }
+    });
+}
+
 
 function update_template() {
     var tpl_id = $('#tpl_id').val();

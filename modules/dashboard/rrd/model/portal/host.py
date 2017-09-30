@@ -13,10 +13,25 @@ class Host(Bean):
         self.maintain_begin = maintain_begin
         self.maintain_end = maintain_end
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'hostname': self.hostname,
+            'maintain_begin': self.maintain_begin,
+            'maintain_end': self.maintain_end,
+        }
+        
     @classmethod
     def query(cls, page, limit, query, maintaining, group_id):
-        where = 'id in (select host_id from grp_host where grp_id = %s)'
-        params = [group_id]
+        # where = 'id in (select host_id from grp_host where grp_id = %s)'
+        # params = [group_id]
+        
+        where = ' 1=1 '
+        params = []
+        
+        if group_id > 0:
+            where += ' and id in (select host_id from grp_host where grp_id = %s)'            
+            params.append(group_id)
 
         if maintaining == '1':
             where += ' and maintain_begin > 0 and maintain_end > 0'

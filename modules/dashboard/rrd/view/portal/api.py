@@ -52,6 +52,23 @@ def api_query_uic_group():
     r = [x.dict() for x in teams]
     return jsonify(data=r)
 
+@app.route('/api/host/query')
+def api_host_query():
+    q = request.args.get('query', '').strip()
+    limit = int(request.args.get('limit', '10'))
+    hs, _ = Host.query(1, limit, q, '', 0)
+    hs = [h.to_json() for h in hs]
+    return jsonify(data=hs)
+
+@app.route('/api/host/<host_id>')
+def api_host_get(host_id):
+    host_id = int(host_id)
+    h = Host.get(host_id)
+    if not h:
+        return jsonify(msg='no such host')
+
+    return jsonify(msg='', data=h.to_json())
+
 
 @app.route('/api/template/query')
 def api_template_query():

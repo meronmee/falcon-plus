@@ -4,6 +4,8 @@ from .bean import Bean
 from rrd.store import db
 from .host import Host
 
+from rrd.utils.logger import logging
+log = logging.getLogger(__file__)
 
 class GroupHost(Bean):
     _tbl = 'grp_host'
@@ -21,10 +23,12 @@ class GroupHost(Bean):
     def bind(cls, group_id, hostname):
         h = Host.read('hostname = %s', [hostname])
         if not h:
+            '''
             Host.create(hostname)
             h = Host.read('hostname = %s', [hostname])
             if not h:
-                return 'host auto add failed'
+            '''
+            return 'invalid host name'
 
         if cls.exists('grp_id = %s and host_id = %s', [group_id, h.id]):
             return 'already existent'
@@ -38,10 +42,12 @@ class GroupHost(Bean):
     def bind_host_id(cls, group_id, host_id):
         if not Host.get(host_id):
             return 'no such host_id'
-
+        
+        # log.debug("grp_id = %s and host_id = %s" %(group_id, host_id))
+        
         if cls.exists('grp_id = %s and host_id = %s', [group_id, host_id]):
             return 'already existent'
-
+                
         if db.update('insert into grp_host(grp_id, host_id) values(%s, %s)', [group_id, host_id]) <= 0:
             return 'failure'
 

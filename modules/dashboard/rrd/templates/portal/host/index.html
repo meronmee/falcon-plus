@@ -2,8 +2,10 @@
 {% block content %}
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datetimepicker.css') }}"/>
-    <script type="text/javascript"
-            src="{{ url_for('static', filename='js/bootstrap-datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datetimepicker.js') }}"></script>            
+    <link rel="stylesheet" href="{{ url_for('static', filename='select2/select2.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/select2-bootstrap.css') }}"/>
+    <script type="text/javascript" src="{{ url_for('static', filename='select2/select2.min.js') }}"></script>
 
     <div class="form-inline" role="form">
         <div class="form-group">
@@ -22,10 +24,17 @@
                 <span class="glyphicon glyphicon-tag"></span>
                 {{ data.group.grp_name }}
             </span>
+             <div class="form-group">
+	            <input id="txtAddHost" type="text" class="form-control" style="width: 300px;"  placeholder="input host name">
+	        </div>
+	        <a id="btnAddHost" onclick="add_host('{{ data.group.id }}');"  href="javascript:;" class="btn btn-default" style="margin-left: 10px;">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add Host
+            </a>
             <a {% if g.xbox %}target="_blank"{% endif %} href="{{ url_for('host_add_get', group_id = data.group.id) }}"
                class="btn btn-default" style="margin-left: 10px;">
                 <span class="glyphicon glyphicon-plus"></span>
-                Add Host
+                Batch Add Host
             </a>
         </div>
     </div>
@@ -44,7 +53,7 @@
         {% for v in data.vs %}
             <tr>
                 <td><input type="checkbox" hid="{{ v.id }}"/></td>
-                <td><a href="http://{{ v.hostname }}:1988/" target="_blank">{{ v.hostname }}</a></td>
+                <td><span title="http://{{ v.hostname }}:1988/" target="_blank">{{ v.hostname }}</span></td>
                 <td>{{ v.maintain_begin | fmt_time }}</td>
                 <td>{{ v.maintain_end | fmt_time }}</td>
                 <td>
@@ -117,6 +126,8 @@
             $('.date').datetimepicker({
                 format: "YYYY-MM-DD HH:mm"
             });
+            
+            make_select2_for_hostname("#txtAddHost");
         });
     </script>
 

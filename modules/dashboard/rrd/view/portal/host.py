@@ -102,30 +102,39 @@ def host_add_post():
     group = HostGroup.read('id = %s', [group_id])
     if not group:
         return jsonify(msg='no such group')
-
-    hosts = request.form['hosts'].strip()
-    if not hosts:
-        return jsonify(msg='hosts is blank')
-
-    host_arr = hosts.splitlines()
-    safe_host_arr = [h for h in host_arr if h]
-    if not safe_host_arr:
-        return jsonify(msg='hosts is blank')
-
-    success = []
-    failure = []
-
-    for h in safe_host_arr:
-        msg = GroupHost.bind(group_id, h)
+    
+    host_id = request.form['host_id']
+    if host_id :
+        host_id = int(host_id)
+        msg = GroupHost.bind_host_id(group_id, host_id)
         if not msg:
-            success.append('%s<br>' % h)
-        else:
-            failure.append('%s %s<br>' % (h, msg))
-
-    data = '<div class="alert alert-danger" role="alert">failure:<hr>' + ''.join(
-        failure) + '</div><div class="alert alert-success" role="alert">success:<hr>' + ''.join(success) + '</div>'
-
-    return jsonify(msg='', data=data)
+            return jsonify(msg='', data='success')
+        else:                
+            return jsonify(msg=msg, data='error')
+    else:  
+        hosts = request.form['hosts'].strip()
+        if not hosts:
+            return jsonify(msg='hosts is blank')
+    
+        host_arr = hosts.splitlines()
+        safe_host_arr = [h for h in host_arr if h]
+        if not safe_host_arr:
+            return jsonify(msg='hosts is blank')
+    
+        success = []
+        failure = []
+    
+        for h in safe_host_arr:
+            msg = GroupHost.bind(group_id, h)
+            if not msg:
+                success.append('%s<br>' % h)
+            else:
+                failure.append('%s %s<br>' % (h, msg))
+    
+        data = '<div class="alert alert-danger" role="alert">failure:<hr>' + ''.join(
+            failure) + '</div><div class="alert alert-success" role="alert">success:<hr>' + ''.join(success) + '</div>'
+    
+        return jsonify(msg='', data=data)
 
 
 # 展示某个机器bind的group
