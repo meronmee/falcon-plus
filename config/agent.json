@@ -37,11 +37,11 @@
          "cpu.cnt": true
         ,"cpu.guest": true
         ,"cpu.busy": true
-        ,"cpu.irq: true
-        ,"cpu.softirq: true
-        ,"cpu.nice: true
-        ,"cpu.steal: true
-        ,"cpu.switches: true
+        ,"cpu.irq": true
+        ,"cpu.softirq": true
+        ,"cpu.nice": true
+        ,"cpu.steal": true
+        ,"cpu.switches": true
 
         ,"df.bytes.total": true
         ,"df.bytes.used": true

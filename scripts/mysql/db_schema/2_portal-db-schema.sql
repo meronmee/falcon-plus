@@ -135,6 +135,8 @@ CREATE TABLE `grp_tpl` (
   DEFAULT CHARSET =utf8
   COLLATE =utf8_unicode_ci;
 
+
+DROP TABLE IF EXISTS plugin_dir;
 CREATE TABLE `plugin_dir` (
   `id`          INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `grp_id`      INT(10) UNSIGNED NOT NULL,
