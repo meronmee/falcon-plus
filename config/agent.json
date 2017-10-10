@@ -34,8 +34,91 @@
     "default_tags": {
     },
     "ignore": {
-        "cpu.cnt": true,
-        "df.inodes.used": true,
-        "df.inodes.used.percent": true
+         "cpu.cnt": true
+        ,"cpu.guest": true
+        ,"cpu.busy": true
+        ,"cpu.irq: true
+        ,"cpu.softirq: true
+        ,"cpu.nice: true
+        ,"cpu.steal: true
+        ,"cpu.switches: true
+
+        ,"df.bytes.total": true
+        ,"df.bytes.used": true
+        ,"df.bytes.used.percent": true
+        ,"df.inodes.total": true
+        ,"df.inodes.free": true
+        ,"df.inodes.free.percent": true
+        ,"df.inodes.used": true
+        ,"df.inodes.used.percent": true 
+
+        ,"mem.memtotal": true
+        ,"mem.memused": true
+        ,"mem.memused.percent": true
+        ,"mem.memfree": true
+        ,"mem.swaptotal": true
+        ,"mem.swapused": true
+        ,"mem.swapfree": true
+        
+        ,"sys.disk.lsiraid.pd.Media_Error_Count": true
+        ,"sys.disk.lsiraid.pd.Other_Error_Count": true
+        ,"sys.disk.lsiraid.pd.Predictive_Failure_Count": true
+        ,"sys.disk.lsiraid.pd.Drive_Temperature": true
+        ,"sys.disk.lsiraid.pd.Firmware_state": true
+        ,"sys.disk.lsiraid.vd.cache_policy": true
+        ,"sys.disk.lsiraid.vd.state": true
+        ,"sys.disk.smart.Reallocated_Sector_Ct": true
+        ,"sys.disk.smart.Spin_Retry_Count": true
+        ,"sys.disk.smart.Reallocated_Event_Count": true
+        ,"sys.disk.smart.Current_Pending_Sector": true
+        ,"sys.disk.smart.Offline_Uncorrectable": true
+        ,"sys.disk.smart.Temperature_Celsius": true
+        ,"sys.disk.rw": true
+
+        ,"sys.disk.rw": true
+        ,"disk.io.msec_weighted_total": true
+        ,"disk.io.read_merged": true
+        ,"disk.io.read_requests": true
+        ,"disk.io.read_sectors": true
+        ,"disk.io.write_merged": true
+        ,"disk.io.write_requests": true
+        ,"disk.io.write_sectors": true
+        ,"disk.io.read_bytes": true
+        ,"disk.io.write_bytes": true
+        ,"disk.io.avgrq_sz": true
+        ,"disk.io.avgqu-sz": true
+        ,"disk.io.await": true
+        ,"disk.io.svctm": true
+        ,"disk.io.util": true
+        
+        ,"load.1min": true
+        ,"load.5min": true
+        ,"load.15min": true
+
+        ,"net.if.in.compressed": true
+        ,"net.if.in.dropped": true
+        ,"net.if.in.fifo.errs": true
+        ,"net.if.in.frame.errs": true
+        ,"net.if.in.multicast": true
+        ,"net.if.out.carrier.errs": true
+        ,"net.if.out.collisions": true
+        ,"net.if.out.compressed": true
+        ,"net.if.out.dropped": true
+        ,"net.if.out.fifo.errs": true
+        ,"net.if.total.dropped": true
+        ,"net.if.total.packets": true
+
+        ,"kernel.maxfiles": true
+        ,"kernel.files.allocated": true
+        ,"kernel.files.left": true
+        ,"kernel.maxproc": true
+
+        ,"sys.ntp.offset": true
+        ,"ss.orphaned": true
+        ,"ss.closed": true
+        ,"ss.timewait": true
+        ,"ss.slabinfo.timewait": true
+        ,"ss.synrecv": true
+        ,"ss.estab": true        
     }
 }
