@@ -31,7 +31,7 @@
         <div class="panel-heading">该模板中的策略列表</div>
         <div class="panel-body">
             <div style="line-height: 35px;">
-                max: 最大报警次数 P：报警级别（&lt;3: 既发短信也发邮件 &gt;=3: 只发邮件） run：生效时间，不指定就是全天生效
+                max: 最大报警次数 P：报警级别（&lt;3: 既发短信也发微信 &gt;=3: 只发微信） run：生效时间，不指定就是全天生效
             </div>
         </div>
         <table class="table table-hover table-bordered table-striped" style="margin-bottom: 0px;">
@@ -112,7 +112,7 @@
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="before_callback_mail"
-                               {% if data.tpl.action.before_callback_mail == 1 %}checked="checked"{% endif %}> 回调之前发提醒邮件
+                               {% if data.tpl.action.before_callback_mail == 1 %}checked="checked"{% endif %}> 回调之前发提醒微信
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="after_callback_sms"
@@ -120,7 +120,7 @@
                     </label>
                     <label class="checkbox-inline">
                         <input type="checkbox" id="after_callback_mail"
-                               {% if data.tpl.action.after_callback_mail == 1 %}checked="checked"{% endif %}> 回调之后发结果邮件
+                               {% if data.tpl.action.after_callback_mail == 1 %}checked="checked"{% endif %}> 回调之后发结果微信
                     </label>
                 </div>
             {% endif %}

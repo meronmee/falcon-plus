@@ -48,7 +48,7 @@
                 <div class="form-group">
                     最多报警次数：<input class="form-control" id="max_step" style="width: 100px;"
                                   value="{{ data.expression.max_step or '3' }}">
-                    报警级别（&lt;3: sms and mail; &gt;=3: mail）：
+                    报警级别（&lt;3: sms and weixin; &gt;=3: weixin）：
                     <input class="form-control" id="priority"
                            style="width: 60px;"
                            value="{{ data.expression.priority or '0' }}">
@@ -71,7 +71,7 @@
                 </label>
                 <label class="checkbox-inline">
                     <input type="checkbox" id="before_callback_mail"
-                           {% if data.action.before_callback_mail == 1 %}checked="checked"{% endif %}> 回调之前发提醒邮件
+                           {% if data.action.before_callback_mail == 1 %}checked="checked"{% endif %}> 回调之前发提醒微信
                 </label>
                 <label class="checkbox-inline">
                     <input type="checkbox" id="after_callback_sms"
@@ -79,7 +79,7 @@
                 </label>
                 <label class="checkbox-inline">
                     <input type="checkbox" id="after_callback_mail"
-                           {% if data.action.after_callback_mail == 1 %}checked="checked"{% endif %}> 回调之后发结果邮件
+                           {% if data.action.after_callback_mail == 1 %}checked="checked"{% endif %}> 回调之后发结果微信
                 </label>
             </div>
         </div>
