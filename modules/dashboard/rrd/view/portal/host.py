@@ -8,6 +8,8 @@ from rrd.model.portal.grp_tpl import GrpTpl
 from rrd.model.portal.host import Host
 from rrd.model.portal.template import Template
 
+from rrd.utils.logger import logging
+log = logging.getLogger(__file__)
 
 @app.route('/portal/group/<group_id>/hosts.txt')
 def group_hosts_export(group_id):
@@ -102,8 +104,10 @@ def host_add_post():
     group = HostGroup.read('id = %s', [group_id])
     if not group:
         return jsonify(msg='no such group')
-    
+        
+    hosts = request.form['hosts'].strip()    
     host_id = request.form['host_id']
+    
     if host_id :
         host_id = int(host_id)
         msg = GroupHost.bind_host_id(group_id, host_id)
@@ -111,8 +115,7 @@ def host_add_post():
             return jsonify(msg='', data='success')
         else:                
             return jsonify(msg=msg, data='error')
-    else:  
-        hosts = request.form['hosts'].strip()
+    else:
         if not hosts:
             return jsonify(msg='hosts is blank')
     

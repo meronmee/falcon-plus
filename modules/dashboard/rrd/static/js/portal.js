@@ -159,7 +159,7 @@ function batch_add_host() {
         return false;
     }
 
-    $.post('/portal/host/add', {'group_id': $("#group_id").val(), 'hosts': hosts}, function (json) {
+    $.post('/portal/host/add', {'group_id': $("#group_id").val(), 'hosts': hosts, 'host_id': ''}, function (json) {
         if (json.msg.length > 0) {
             err_message_quietly(json.msg);
         } else {
@@ -175,11 +175,11 @@ function add_host(group_id) {
         return false;
     }
 
-    $.post('/portal/host/add', {'group_id': group_id, 'host_id': hosts}, function (json) {
+    $.post('/portal/host/add', {'group_id': group_id, 'hosts': '', 'host_id': hosts}, function (json) {
         if (json.msg.length > 0) {
             err_message_quietly(json.msg);
         } else {
-            err_message_quietly("添加成功");
+        	ok_message_quietly("添加成功");
             location.reload();
         }
     }, "json");
