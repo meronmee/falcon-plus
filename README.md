@@ -27,7 +27,7 @@
 
 # 整合版安装部署
 ## 准备
-- 按照下面的编译方式打包生产： open-falcon-vx.x.x.tar.gz (以下使用open-falcon-v0.2.1.m2.tar.gz)
+- 按照下面的编译方式打包最终生成: open-falcon-vx.x.x.tar.gz (以下使用open-falcon-v0.2.1.m2.tar.gz)
 - redis,mysql
 
 ## 服务端
@@ -97,6 +97,18 @@ apt-get install -y python-dev libldap2-dev libsasl2-dev libssl-dev;
 
 cd $WORKSPACE/dashboard/;ll;
 virtualenv ./env;
+
+/*
+如上一步出错，可以分别安装python pip  virtualenv 
+See: http://www.xuzefeng.com/post/89.html
+
+apt-get remove python-virtualenv;
+sudo apt-get install python-pip;
+sudo pip install virtualenv;
+ln -s "/usr/local/bin/virtualenv" "/usr/bin/virtualenv";
+virtualenv ./env;
+*/
+
 ./env/bin/pip install -r pip_requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 cd $WORKSPACE/dashboard/
