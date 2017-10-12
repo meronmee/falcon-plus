@@ -51,6 +51,8 @@
         ,"df.inodes.free.percent": true
         ,"df.inodes.used": true
         ,"df.inodes.used.percent": true 
+        ,"df.statistics.total": true
+        ,"df.statistics.used": true
 
         ,"mem.memtotal": true
         ,"mem.memused": true
@@ -90,6 +92,7 @@
         ,"disk.io.await": true
         ,"disk.io.svctm": true
         ,"disk.io.util": true
+        ,"disk.io.ios_in_progress": true
         
         ,"load.1min": true
         ,"load.5min": true
@@ -100,13 +103,18 @@
         ,"net.if.in.fifo.errs": true
         ,"net.if.in.frame.errs": true
         ,"net.if.in.multicast": true
+        ,"net.if.in.percent": true
         ,"net.if.out.carrier.errs": true
         ,"net.if.out.collisions": true
         ,"net.if.out.compressed": true
         ,"net.if.out.dropped": true
         ,"net.if.out.fifo.errs": true
+        ,"net.if.out.percent": true
         ,"net.if.total.dropped": true
         ,"net.if.total.packets": true
+        ,"net.if.total.bytes": true
+        ,"net.if.total.errors": true
+        ,"net.if.speed.bits": true
 
         ,"kernel.maxfiles": true
         ,"kernel.files.allocated": true
@@ -119,6 +127,36 @@
         ,"ss.timewait": true
         ,"ss.slabinfo.timewait": true
         ,"ss.synrecv": true
-        ,"ss.estab": true        
+        ,"ss.estab": true       
+        
+        ,"TcpExt.ArpFilter": true
+        ,"TcpExt.DelayedACKLocked": true
+        ,"TcpExt.ListenDrops": true
+        ,"TcpExt.ListenOverflows": true
+        ,"TcpExt.LockDroppedIcmps": true
+        ,"TcpExt.PruneCalled": true
+        ,"TcpExt.TCPAbortFailed": true
+        ,"TcpExt.TCPAbortOnMemory": true
+        ,"TcpExt.TCPAbortOnTimeout": true
+        ,"TcpExt.TCPBacklogDrop": true
+        ,"TcpExt.TCPDSACKUndo": true
+        ,"TcpExt.TCPFastRetrans": true
+        ,"TcpExt.TCPLossFailures": true
+        ,"TcpExt.TCPLostRetransmit": true
+        ,"TcpExt.TCPMemoryPressures": true
+        ,"TcpExt.TCPMinTTLDrop": true
+        ,"TcpExt.TCPPrequeueDropped": true
+        ,"TcpExt.TCPSchedulerFailed": true
+        ,"TcpExt.TCPSpuriousRTOs": true
+        ,"TcpExt.TCPTSReorder": true
+        ,"TcpExt.TCPTimeouts": true
+        ,"TcpExt.TW": true
+        ,"snmp.Udp.InCsumErrors": true
+        ,"snmp.Udp.InDatagrams": true
+        ,"snmp.Udp.InErrors": true
+        ,"snmp.Udp.NoPorts": true
+        ,"snmp.Udp.OutDatagrams": true
+        ,"snmp.Udp.RcvbufErrors": true
+        ,"snmp.Udp.SndbufErrors": true
     }
 }
