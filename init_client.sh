@@ -21,6 +21,8 @@ cd $workspace;
 
 # 本机hostname
 hostname=test.192.168.1.100
+# 本机IP，设为空字符串Agent会自动探测本机IP
+hostip=""
 
 # 服务端host
 server_host=192.168.1.100
@@ -98,6 +100,7 @@ grep -ilr "3306"  $workspace/ | xargs -n1 -- sed -i "s/root:@tcp(127.0.0.1:3306)
 # ----------------------agent-----------------------------
 echo "配置 agent 信息[$cfg_agent]..."
 sed -i "/hostname/s/myhost/$hostname/g" "$cfg_agent";
+sed -i "/myip/s/myip/$hostip/g" "$cfg_agent";
 sed -i "/1988/s/1988/$port_agent/g" "$cfg_agent";
 sed -i "/6030/s/0.0.0.0:6030/$server_host:$port_hbs_rpc/g" "$cfg_agent";
 sed -i "/8433/s/0.0.0.0:8433/$server_host:$port_transfer_rpc/g" "$cfg_agent";
@@ -150,7 +153,7 @@ sed -i "/6081/s/6081/$port_judge_http/g" "$cfg_judge";
 sed -i "/6080/s/6080/$port_judge_rpc/g" "$cfg_judge";
 sed -i "/6030/s/6030/$port_hbs_rpc/g" "$cfg_judge";
 sed -i "/6379/s/127.0.0.1:6379/$redis_host:$redis_port/g" "$cfg_judge";
-sed -i "/redispass/s/redispass/$redis_password/g" "$cfg_alarm";
+sed -i "/redispass/s/redispass/$redis_password/g" "$cfg_judge";
 
 # ------------------------nodata-----------------------------
 echo "配置 nodata 信息[$cfg_nodata]..."

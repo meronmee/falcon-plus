@@ -1,7 +1,7 @@
 {
     "debug": true,
     "hostname": "myhost",
-    "ip": "",
+    "ip": "myip",
     "plugin": {
         "enabled": false,
         "dir": "./plugin",
